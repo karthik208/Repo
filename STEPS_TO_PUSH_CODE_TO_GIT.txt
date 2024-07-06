@@ -1,0 +1,59 @@
+GIT CMDS:
+
+Set Up Git Configuration
+Configure your Git username and email. Open a terminal or command prompt and run:
+
+E:\All Files\D\MY_CODES> git config --global user.name "karthik208"
+E:\All Files\D\MY_CODES> git config --global user.email "karthikarunagiri001@gmail.com"
+
+Initialize a Git Repository
+Navigate to the directory where your PySpark word count script is located and initialize a Git repository:
+E:\All Files\D\MY_CODES>git init
+Initialized empty Git repository in E:/All Files/D/MY_CODES/.git/
+
+Create a README File (Optional)
+It is a good practice to include a README file in your repository:
+E:\All Files\D\MY_CODES>echo "# PySpark Word Count" >> README.md
+
+# Add your script and README file to the repository
+git add word_count.py README.md
+
+Commit Your Changes
+Commit the changes to your local repository:
+git commit -m "Initial commit: Add PySpark word count script"
+
+Add Remote Repository
+Once your repository is created on GitHub, you will be provided with a URL. Add this URL as a remote repository in your local Git configuration:
+git remote add origin https://github.com/karthik208/Repo.git
+git branch -M main
+
+Push Your Code to GitHub
+Push your local commits to the remote repository:
+E:\All Files\D\MY_CODES>git push -u origin main
+info: please complete authentication in your browser...
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 715 bytes | 357.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/karthik208/Repo.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+
+==============================PUSH CODE TO GIT/ PUSH MODIFIED CODE=================================
+Check the Status
+git status
+
+Add the Changes
+Add the changes to the staging area. If you want to add all modified files, use:  git add .
+If you want to add a specific file, use: git add filename
+
+Commit the Changes
+Commit the changes with a meaningful commit message:
+git commit -m "Describe the changes you made"
+
+Push the Changes to the Remote Repository
+Push the changes to the remote repository. Assuming you are on the main branch:
+git push origin main
