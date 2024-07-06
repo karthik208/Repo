@@ -3,8 +3,8 @@ GIT CMDS:
 Set Up Git Configuration
 Configure your Git username and email. Open a terminal or command prompt and run:
 
-E:\All Files\D\MY_CODES> git config --global user.name "karthik208"
-E:\All Files\D\MY_CODES> git config --global user.email "karthikarunagiri001@gmail.com"
+E:\All Files\D\MY_CODES> git config --global user.name "<<GIT USER NAME>>"
+E:\All Files\D\MY_CODES> git config --global user.email "<<EMAIL ID>>"
 
 Initialize a Git Repository
 Navigate to the directory where your PySpark word count script is located and initialize a Git repository:
@@ -22,25 +22,13 @@ Commit Your Changes
 Commit the changes to your local repository:
 git commit -m "Initial commit: Add PySpark word count script"
 
-Add Remote Repository
+Add Remote Repository: create repositoy on git
 Once your repository is created on GitHub, you will be provided with a URL. Add this URL as a remote repository in your local Git configuration:
-git remote add origin https://github.com/karthik208/Repo.git
+git remote add origin https://github.com/<<GIT USER NAME>>/<<REPO NAME.git>>
 git branch -M main
 
 Push Your Code to GitHub
 Push your local commits to the remote repository:
-E:\All Files\D\MY_CODES>git push -u origin main
-info: please complete authentication in your browser...
-Enumerating objects: 4, done.
-Counting objects: 100% (4/4), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (4/4), 715 bytes | 357.00 KiB/s, done.
-Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
-To https://github.com/karthik208/Repo.git
- * [new branch]      main -> main
-branch 'main' set up to track 'origin/main'.
-
 
 ==============================PUSH CODE TO GIT/ PUSH MODIFIED CODE=================================
 Check the Status
