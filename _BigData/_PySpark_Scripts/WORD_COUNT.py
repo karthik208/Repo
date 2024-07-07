@@ -1,29 +1,53 @@
 from pyspark.sql import SparkSession
 
-# Initialize Spark Session
-spark = SparkSession.builder.appName("Word Count").getOrCreate()
+def get_sparkses():
+    # Initialize Spark Session
+    sparkses = SparkSession.builder.appName("Word Count").getOrCreate()
+    return sparkses
 
-# Path to the input text file
-input_path = "path/to/your/input.txt"
+def main():
+    spark = get_sparkses()
 
-# Read the input file
-lines = spark.read.text(input_path).rdd.map(lambda r: r[0])
+    try:
+        # Path to the input text file
+        input_path = "file:///home/hduser/Desktop/query.txt"
 
-# Split each line into words
-words = lines.flatMap(lambda line: line.split(" "))
+        # Read the input file
+        lines = spark.read.text(input_path).rdd.map(lambda r: r[0])
 
-# Map each word to a (word, 1) pair
-word_pairs = words.map(lambda word: (word, 1))
+        # Split each line into words
+        words = lines.flatMap(lambda line: line.split(" "))
 
-# Reduce by key (word) to count occurrences
-word_counts = word_pairs.reduceByKey(lambda a, b: a + b)
+        # Map each word to a (word, 1) pair
+        word_pairs = words.map(lambda word: (word, 1))
+        #print(word_pairs.collect())
 
-# Collect the results
-results = word_counts.collect()
+        # Reduce by key (word) to count occurrences
+        word_counts = word_pairs.reduceByKey(lambda a, b: a + b)
 
-# Display the word counts
-for word, count in results:
-    print(f"{word}: {count}")
+        # Collect the results
+        results = word_counts.collect()
+        #print(results)
 
-# Stop the Spark Session
-spark.stop()
+        # Display the word counts
+        total_count = 0
+        for word, count in results:
+            # print(f"{word}: {count}")
+            total_count += count
+
+        print(f"The total word count from the file {input_path} is: {total_count}")
+
+    except Exception as ex:
+        print(f"Exception Occurred: {str(ex)}")
+
+    finally:
+        spark.stop()
+
+main()
+
+
+
+
+
+
+
