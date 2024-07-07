@@ -1,0 +1,25 @@
+#The .gitignore file is a special file used in Git repositories to specify which files and directories should be ignored by Git. It is a text file that #contains patterns matching the names of files and directories you want Git to ignore.
+
+#Structure and Syntax
+#Each line in a .gitignore file specifies a pattern.
+#Blank lines are ignored.
+#Lines starting with # are comments.
+#Patterns can specify file names, directories, or file types.
+
+#Common Patterns
+#Ignoring Specific Files:
+#secret.txt (ignores secret.txt file in the root directory)
+
+#Ignoring Directories:
+logs/ (ignores the entire logs directory)
+build/ (ignores the entire build directory)
+
+#Ignoring File Types:
+#*.log (ignores all .log files)
+#*.tmp (ignores all .tmp files)
+
+Ignoring Files in Specific Directories:
+#dir/*.txt (ignores all .txt files in dir directory)
+
+#Negating Patterns:
+#!important.log (does not ignore important.log even if *.log is ignored)

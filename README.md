@@ -1,2 +1,1 @@
-"# PySpark Word Count" 
-"# Steps to push the code to Git" 
+"# _BigData : The folder contains big data related codes and scripts" 

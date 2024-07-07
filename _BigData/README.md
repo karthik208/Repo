@@ -1,0 +1,2 @@
+"# _PySpark_Scripts : The folder contains PySpark scripts or python scripts" 
+"# _Bash_Scripts : The folder contains Bash/.sh scripts. A bash script is a file containing a sequence of commands that are executed by the bash program line by line." 
