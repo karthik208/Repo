@@ -1,0 +1,1 @@
+ "#smf_inseredata_copy.bash: Automation of Data ingestion pipeline using SFM process - used to automate the SFM (source (cloud s3) Insurance cust info) -> ingestion(pull)-> Edgenode Landing pad -> Staging(lfs)->data validate -> reject & notification ->push->hdfs(datalake)-> Archival -> availability validate (trigger file mechanism) ->processing/analysing (consumers))"
