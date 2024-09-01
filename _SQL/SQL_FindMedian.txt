@@ -1,0 +1,53 @@
+/*
+Example of a Median
+To find the median value in a list with an odd amount of numbers, one would find the number that is in the middle with an equal amount of numbers on either side of the median. To find the median, first arrange the numbers in order, usually from lowest to highest.
+
+For example, in a data set of {3, 13, 2, 34, 11, 26, 47}, the sorted order becomes {2, 3, 11, 13, 26, 34, 47}. The median is the number in the middle {2, 3, 11, 13, 26, 34, 47}, which in this instance is 13 since there are three numbers on either side.
+
+To find the median value in a list with an even amount of numbers, one must determine the middle pair, add them, and divide by two. Again, arrange the numbers in order from lowest to highest.
+
+For example, in a data set of {3, 13, 2, 34, 11, 17, 27, 47}, the sorted order becomes {2, 3, 11, 13, 17, 27, 34, 47}. The median is the average of the two numbers in the middle {2, 3, 11, 13, 17, 26 34, 47}, which in this case is 15 or (13 + 17) ÷ 2 = 15.
+
+1. FLOOR Function:
+The FLOOR function rounds a number down to the nearest integer less than or equal to the number.
+
+Syntax SQL:
+FLOOR(number)
+
+Example:
+SELECT FLOOR(4.7);   -- Returns 4
+SELECT FLOOR(-4.7);  -- Returns -5
+FLOOR(4.7) returns 4 because 4 is the largest integer less than or equal to 4.7.
+FLOOR(-4.7) returns -5 because -5 is the largest integer less than or equal to -4.7.
+
+2. CEIL or CEILING Function SQL:
+The CEIL (or CEILING) function rounds a number up to the nearest integer greater than or equal to the number.
+
+CEIL(number)
+Or
+CEILING(number)
+
+Example:
+SELECT CEIL(4.2);    -- Returns 5
+SELECT CEILING(4.2); -- Also returns 5
+SELECT CEIL(-4.2);   -- Returns -4
+SELECT CEILING(-4.2);-- Also returns -4
+CEIL(4.2) or CEILING(4.2) returns 5 because 5 is the smallest integer greater than or equal to 4.2.
+CEIL(-4.2) or CEILING(-4.2) returns -4 because -4 is the smallest integer greater than or equal to -4.2.
+
+Use Cases:
+FLOOR: If you want to get the integer part of a number by rounding down, regardless of whether the number is positive or negative.
+CEIL or CEILING: If you want to get the integer part of a number by rounding up.
+*/
+
+SET @rowindex := -1;
+SELECT
+   AVG(d.age) as Median 
+FROM
+   (SELECT @rowindex:=@rowindex + 1 AS rowindex,
+           employee.age AS age
+    FROM employee
+    ORDER BY employee.age) AS d
+WHERE
+d.rowindex IN (FLOOR(@rowindex / 2), CEIL(@rowindex / 2));
+
