@@ -1,3 +1,3 @@
-"#WORD_COUNT.py: The script will read a plain text file and return how many words present in the file" 
-"#WORD_SEARCH.py: The script will read a plain text file and search for give word present in the file or not"
-"#APIToHive.py: The script will hit the REST API and get the JSON data. The JSON data will be stored on RDD, post the custom schema applied, and DataFrame (DF) will be created. DF will be flattened and columns will be selected to flatten the result. Finally, data will be appended to a Hive table. To execute the script in command line: spark-submit --master local --py-files /home/hduser/PycharmProjects/pythonProject/venv/bin/python /home/hduser/PycharmProjects/pythonProject/APIStreamingToHDFS.py"
+"# WORD_COUNT.py: The script will read a plain text file and return how many words present in the file" 
+"# WORD_SEARCH.py: The script will read a plain text file and search for give word present in the file or not"
+"# _LOAD_API_TO_HIVE: Contains project to load the raw data from API to Hive table. Files: APIToHive.py, ConfigurationManager.py, config.ini"

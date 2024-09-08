@@ -1,0 +1,3 @@
+"# APIToHive.py: The script will hit the REST API and get the JSON data. The JSON data will be stored on RDD, post the custom schema applied, and DataFrame (DF) will be created. DF will be flattened and columns will be selected to flatten the result. Finally, data will be appended to a Hive table. To execute the script in command line: spark-submit --master local --py-files /home/hduser/PycharmProjects/pythonProject/venv/bin/python /home/hduser/PycharmProjects/pythonProject/APIStreamingToHDFS.py"
+"# ConfigurationManager.py: Contains logic to read config files (config.ini). class: ConfigManager Methods: load_config(self, file_path), get_config_value(self, section, key, default=None), get_all_configs(self)"
+"# config.ini: Configuration file for APIToHive.py"

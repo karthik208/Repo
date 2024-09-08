@@ -1,10 +1,16 @@
+import configparser
+
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, LongType, StringType, ArrayType
 from pyspark.sql.functions import col, explode
+from ConfigManager import ConfigManager
 
 import sys
 import requests
 import json
+
+#initiating ConfigManager class to read the config file
+config = ConfigManager()
 
 #check the given string is null or empty
 def check_string(s):
@@ -14,8 +20,8 @@ def check_string(s):
 
 # Initialize Spark Session
 def get_sparkses():
-    sparkses = SparkSession.builder.appName("API Streaming To HDFS")\
-        .config("hive.metastore.uris", "thrift://localhost:9083")\
+    sparkses = SparkSession.builder.appName(config.get_config_value('config_API_TO_HDFS','spark_app_name'))\
+        .config("hive.metastore.uris", config.get_config_value('hive','hive_metastore_uris'))\
         .enableHiveSupport()\
         .getOrCreate()
     return sparkses
@@ -23,7 +29,8 @@ def get_sparkses():
 def get_sparkcon():
     spark = get_sparkses()
     sc = spark.sparkContext
-    sc.setLogLevel('ERROR')
+    sc.setLogLevel(config.get_config_value('logging','log_level'))
+    #sc.setLogLevel('ERROR')
     return sc
 
 
@@ -46,9 +53,19 @@ def get_api_data(api_url):
 
 def main():
     print(sys.executable)
+
+    config.load_config('config.ini')  # Load the config file
+    print("Full config:", config.get_all_configs())
+
+    print(f"Log Level from config: {config.get_config_value('logging', 'log_level')}")
+    print(f"API URL from config: {config.get_config_value('config_API_TO_HDFS', 'api_url')}")
+
     try:
         #api_url = "https://randomuser.me/api/?exc=login"
-        api_url = "https://randomuser.me/api/"
+        #api_url = "https://randomuser.me/api/"
+        
+        #Setting default url if api_url is not configured in config file
+        api_url = config.get_config_value('config_API_TO_HDFS', 'api_url', default='https://randomuser.me/api/') 
         response_data = get_api_data(api_url)
         #print(response_data)
         spark = get_sparkses()
@@ -182,8 +199,8 @@ def main():
             col("info.version").alias("version")
         )
 
-        #Show the DataFrame schema and data
-        #df.printSchema()
+        # Show the DataFrame schema and data
+        # df.printSchema()
         #print(flattened_df.show(truncate=False))
 
         spark.sql("CREATE DATABASE IF NOT EXISTS pulsesurvey")
